@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import mcityLogo from "../../Resources/images/logos/manchester_city_logo.png";
 
@@ -24,4 +25,12 @@ export const CityLogo = props => {
   } else {
     return template;
   }
+};
+
+CityLogo.propTypes = {
+  linkTo: PropTypes.string,
+  link: PropTypes.bool,
+  mcityLogo: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired
 };

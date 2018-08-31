@@ -42,6 +42,33 @@ export const reverseArray = arr => {
   return arr.reduceRight((acc, next) => [...acc, next], []);
 };
 
+export const isEmpty = value =>
+  value === undefined ||
+  value === null ||
+  (typeof value === "object" && Object.keys(value).length === 0) ||
+  (typeof value === "string" && value.trim().length === 0);
+
+export const validate = (key, element) => {
+  let errors = {};
+
+  if (element.validation.email) {
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const valid = re.test(element.value);
+    const message = `${!valid ? "Must be a valid email" : ""}`;
+    !valid && (errors.email = message);
+  }
+
+  if (element.validation.required) {
+    const valid = element.value !== "";
+    const message = `${!valid ? "This field is required" : ""}`;
+    !valid && (errors[key] = message);
+  }
+
+  const valid = isEmpty(errors);
+
+  return { valid, errors };
+};
+
 Tag.defaultProps = {
   size: "1rem",
   color: "#ffffff",

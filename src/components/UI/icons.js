@@ -30,7 +30,6 @@ export const CityLogo = props => {
 CityLogo.propTypes = {
   linkTo: PropTypes.string,
   link: PropTypes.bool,
-  mcityLogo: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired
 };

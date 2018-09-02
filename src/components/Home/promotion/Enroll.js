@@ -78,7 +78,7 @@ class Enroll extends Component {
   inputChangeHandler = element => {
     const newElement = { ...this.state.formData[element.id] };
 
-    newElement.value = element.event.target.value.trim();
+    newElement.value = element.event.target.value;
 
     this.delayedCallback(this.validateFormField, element.id);
     this.setState(prevState => ({

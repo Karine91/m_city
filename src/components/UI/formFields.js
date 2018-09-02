@@ -18,11 +18,38 @@ class FormField extends Component {
       case "input":
         formTemplate = (
           <div className="form_field">
+            {this.props.formData.config.label && (
+              <label className="label_inputs">
+                {this.props.formData.config.label}
+              </label>
+            )}
             <input
               {...this.props.formData.config}
               value={this.props.formData.value}
               onChange={this.onChange}
             />
+            {this.props.error && (
+              <div className="error_label">{this.props.error}</div>
+            )}
+          </div>
+        );
+        break;
+      case "select":
+        formTemplate = (
+          <div className="form_field">
+            {this.props.formData.config.label && (
+              <label className="label_inputs">
+                {this.props.formData.config.label}
+              </label>
+            )}
+            <select value={this.props.formData.value} onChange={this.onChange}>
+              <option value="null">Select One</option>
+              {this.props.formData.config.options.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.title}
+                </option>
+              ))}
+            </select>
             {this.props.error && (
               <div className="error_label">{this.props.error}</div>
             )}

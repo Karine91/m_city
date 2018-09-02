@@ -67,7 +67,7 @@ export const validate = (key, element) => {
   }
 
   if (element.validation.required) {
-    const valid = element.value !== "";
+    const valid = element.value.trim() !== "";
     const message = `${!valid ? "This field is required" : ""}`;
     !valid && (errors[key] = message);
   }

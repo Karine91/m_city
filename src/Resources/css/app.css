@@ -54,9 +54,13 @@ button {
   color: #ffffff;
   border: 1px solid #0d1831;
   padding: 5px 10px;
-  margin-top: 10px;
   font-size: 15px;
   border-radius: 3px;
+  cursor: pointer;
+}
+
+.form_field {
+  margin-bottom: 10px;
 }
 
 .error_label {

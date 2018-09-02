@@ -17,7 +17,7 @@ class FormField extends Component {
     switch (this.props.formData.element) {
       case "input":
         formTemplate = (
-          <div>
+          <div className="form_field">
             <input
               {...this.props.formData.config}
               value={this.props.formData.value}
@@ -36,7 +36,7 @@ class FormField extends Component {
   };
 
   render() {
-    return <div>{this.renderTemplate()}</div>;
+    return this.renderTemplate();
   }
 }
 

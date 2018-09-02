@@ -8,7 +8,7 @@ const PromotionAnimation = () => {
       <div className="left">
         <Zoom>
           <div>
-            <span>We a</span>
+            <span>Win a</span>
             <span>Jersey</span>
           </div>
         </Zoom>

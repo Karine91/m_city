@@ -58,6 +58,14 @@ export const validate = (key, element) => {
     !valid && (errors.email = message);
   }
 
+  if (element.validation.minLength) {
+    const valid = element.value.length >= element.validation.minLength;
+    const message = `${
+      !valid ? "Password must contain at least 6 characters" : ""
+    }`;
+    !valid && (errors[key] = message);
+  }
+
   if (element.validation.required) {
     const valid = element.value !== "";
     const message = `${!valid ? "This field is required" : ""}`;

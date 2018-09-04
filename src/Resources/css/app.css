@@ -1,7 +1,16 @@
+html,
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
+
+  flex-grow: 1;
 }
 
 a {
@@ -128,6 +137,7 @@ button {
   color: #ffffff;
   border: 1px solid white;
   padding: 10px;
+  cursor: pointer;
 }
 
 .not_found_container {
@@ -135,7 +145,7 @@ button {
   margin-top: 96px;
   padding: 20px;
   background-size: 5px 5px !important;
-  min-height: 100vh;
+  flex-grow: 1;
   text-align: center;
   font-size: 90px;
   font-family: "Righteous", cursive;
@@ -560,6 +570,10 @@ footer .footer_discl {
   padding: 60px 0px;
 }
 
+.progress {
+  flex-grow: 1;
+}
+
 /*=============================
          ADMIN
 ===============================*/
@@ -567,12 +581,13 @@ footer .footer_discl {
 .admin_container {
   margin-top: 96px;
   display: flex;
+  flex-grow: 1;
 }
 
 .admin_container .admin_left_nav {
-  min-height: 100vh;
   background: #282828;
   border-right: 2px solid #01285e;
+  flex-basis: 200px;
 }
 
 .admin_container .admin_right {
@@ -581,6 +596,7 @@ footer .footer_discl {
 .admin_container .admin_progress {
   text-align: center;
   margin: 20px 0px;
+  flex-grow: 1;
 }
 
 .admin_container .matches_tag_red {
@@ -636,7 +652,7 @@ footer .footer_discl {
   margin-top: 96px;
   padding: 20px;
   background-size: 5px 5px !important;
-  min-height: 100vh;
+  flex-grow: 1;
 }
 
 .team_category_wrapper .title {
@@ -688,4 +704,11 @@ footer .footer_discl {
   color: #d5ebfe;
   text-align: center;
   margin-top: 200px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex-grow: 1;
 }

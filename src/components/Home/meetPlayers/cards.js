@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { easePolyOut } from "d3-ease";
 import Animate from "react-move/Animate";
 import PropTypes from "prop-types";
-import { firebasePlayers } from "../../../firebase";
+import { firebasePlayers, firebase } from "../../../firebase";
 import { firebaseLooper } from "../../UI/misc";
 
-import Otamendi from "../../../Resources/images/players/Otamendi.png";
 import PlayerCard from "../../UI/PlayerCard";
 
 export class Homecards extends Component {
@@ -17,8 +16,32 @@ export class Homecards extends Component {
   componentDidMount() {
     firebasePlayers.once("value").then(snapshot => {
       const players = firebaseLooper(snapshot);
-      this.setState({
-        players: this.getRandomPlayers(players)
+
+      let randomPlayers = this.getRandomPlayers(players);
+      let promises = [];
+      for (let key in randomPlayers) {
+        promises.push(
+          new Promise((resolve, reject) => {
+            firebase
+              .storage()
+              .ref("players")
+              .child(randomPlayers[key].image)
+              .getDownloadURL()
+              .then(url => {
+                randomPlayers[key].url = url;
+                resolve();
+              })
+              .catch(err => {
+                resolve();
+              });
+          })
+        );
+      }
+
+      Promise.all(promises).then(() => {
+        this.setState({
+          players: randomPlayers
+        });
       });
     });
   }
@@ -61,7 +84,7 @@ export class Homecards extends Component {
               number={player.number}
               name={player.name}
               lastName={player.lastname}
-              bck={Otamendi}
+              bck={player.url}
             />
           </div>
         )}

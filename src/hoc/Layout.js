@@ -4,7 +4,7 @@ import Footer from "../components/Header_footer/Footer";
 
 const Layout = props => {
   return (
-    <div>
+    <div className="flex-container">
       <Header />
       {props.children}
       <Footer />
